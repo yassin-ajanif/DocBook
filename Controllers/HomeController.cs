@@ -1,4 +1,5 @@
 using MedicalAppointement.Models;
+using MedicalAppointementDataLayer.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -13,21 +14,21 @@ namespace MedicalAppointement.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly ItestService _testService;
 
-        public string myName = "yassin";
-        public HomeController(ILogger<HomeController> logger)
+       
+        public HomeController(ILogger<HomeController> logger,ItestService testService)
         {
             _logger = logger;
+            _testService = testService;
         }
 
         public IActionResult Index()
         {
-            var modelo = new MyViewModel
-            {
-                MyName = "Yassin"
-            };
 
-            return View(modelo);
+           // ViewBag.DatabaseValue  = _testService.getvalueFromDbTest();
+            string testValue  = _testService.getvalueFromDbTest();
+            return View("index",testValue);
         }
 
         public IActionResult Privacy()

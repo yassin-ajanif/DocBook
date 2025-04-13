@@ -15,4 +15,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MedicalAppointementBusinessLayer\MedicalAppointementBusinessLayer.csproj" />
+    <ProjectReference Include="..\SharedLayer\SharedLayer.csproj" />
+  </ItemGroup>
+
 </Project>
